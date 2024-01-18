@@ -15,7 +15,6 @@ jobs:
           latexmk_use_lualatex: true
           texlive_version: 2023
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: PDF
-          path: talk.pdf
+          name: talk.pdf
