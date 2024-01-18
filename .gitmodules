@@ -1,0 +1,6 @@
+[submodule "libs/awesome-beamer"]
+	path = libs/awesome-beamer
+	url = git@github.com:LukasPietzschmann/awesome-beamer.git
+[submodule "libs/smile"]
+	path = libs/smile
+	url = git@github.com:LukasPietzschmann/smile.git

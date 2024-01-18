@@ -1,0 +1,34 @@
+\documentclass[aspectratio=169]{beamer}
+
+\makeatletter
+\appto\input@path{{libs/awesome-beamer}, {libs/smile}}
+\makeatother
+
+\usepackage{fontspec}
+\setmonofont[
+	Path = ./libs/awesome-beamer/fonts/,
+	Scale = .9,
+	Extension = .ttf,
+	Contextuals=Alternate,
+	BoldFont={*-Bold},
+	UprightFont={*-Regular},
+]{Fira Code}
+\renewcommand\setmonofont[2][]{}
+
+\definecolor{forest}{HTML}{1a4301}
+
+\usetheme[english, color, coloraccent=forest]{awesome}
+
+\title{Renewable Energies}
+\subtitle{Hydrogen}
+\author{Lukas Pietzschmann}
+\email{lukas.pietzschmann@uni-ulm.de}
+\institute{Center for General Scientific Education}
+\uni{Ulm University}
+\location{Ulm}
+\background{background.jpg}
+\date\today
+
+\begin{document}
+	\maketitle
+\end{document}
