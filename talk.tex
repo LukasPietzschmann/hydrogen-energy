@@ -23,7 +23,9 @@
 \usepackage{pgfplotstable}
 \usepackage{fontawesome}
 \usepackage{tikzpingus}
+\usepackage{pdfpc}
 
+\newcommand<>{\talknote}[1]{\only#2{\pdfpcnote{- #1}\relax}}
 
 \addbibresource{refs.bib}
 
