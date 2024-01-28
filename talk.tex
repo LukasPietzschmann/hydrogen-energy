@@ -75,6 +75,47 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle[\cite{ritchie2020}]{Energy consumption by source}
+	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
+	\pgfplotstableread[col sep=comma,]{energy.csv}\energy
+	\begin{wide}
+		\href{https://ourworldindata.org/energy-mix}{\begin{tikzpicture}
+			\begin{axis}[axis background/.style={fill=accent!3},
+					ylabel=Evergy Consumption (TWh), axis line style={lw,rounded corners},
+					xticklabel={\pgfmathint{\tick}\pgfmathresult},
+					legend style={
+						font=\scriptsize,
+						cells={anchor=west},
+						legend pos=north west,
+					},
+					stack plots=y
+				]
+				\addplot[color=green, smooth] table [x=year,y=other,col sep=comma]{\energy};
+				\addlegendentry{Other}
+				% \addplot[color=brown, smooth] table [x=year,y=bio,col sep=comma]{\energy};
+				% \addlegendentry{Biofuels}
+				\addplot[color=yellow, smooth] table [x=year,y=solar,col sep=comma]{\energy};
+				\addlegendentry{Solar}
+				\addplot[color=blue, smooth] table [x=year,y=wind,col sep=comma]{\energy};
+				\addlegendentry{Wind}
+				\addplot[color=cyan, smooth] table [x=year,y=hydro,col sep=comma]{\energy};
+				\addlegendentry{Hydropower}
+				\addplot[color=red, smooth] table [x=year,y=nuclear,col sep=comma]{\energy};
+				\addlegendentry{Nuclear}
+				\addplot[color=violet, smooth] table [x=year,y=gas,col sep=comma]{\energy};
+				\addlegendentry{Gas}
+				\addplot[color=teal, smooth] table [x=year,y=oil,col sep=comma]{\energy};
+				\addlegendentry{Oil}
+				\addplot[color=orange, smooth] table [x=year,y=coal,col sep=comma]{\energy};
+				\addlegendentry{Coal}
+				% \addplot[color=darkmaroon, smooth] table [x=year,y=bio,col sep=comma]{\energy};
+				% \addlegendentry{Biomass}
+			\end{axis}
+		\end{tikzpicture}}
+	\end{wide}
+\end{frame}
+
+\begin{frame}
 	\frametitle{References}
 	\printbibliography
 \end{frame}
