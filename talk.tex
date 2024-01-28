@@ -15,9 +15,15 @@
 ]{Fira Code}
 \renewcommand\setmonofont[2][]{}
 
+\usepackage{firamath-otf}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
 \definecolor{forest}{HTML}{1a4301}
 
 \usetheme[english, color, coloraccent=forest]{awesome}
+
+\addbibresource{refs.bib}
 
 \addtobeamertemplate{title page}{}{
 \begin{tikzpicture}[overlay, remember picture]
@@ -25,7 +31,12 @@
 \end{tikzpicture}
 }
 
-\title{Renewable Energies}
+\pgfplotsset{
+	every axis legend/.append style={style={roundednode,fill=accent!10,lcr}},
+	every axis plot/.append style={lw,lcr},
+}
+
+\title[Renewable Energies: Hydrogen]{Renewable Energies}
 \subtitle{Hydrogen}
 \author{Lukas Pietzschmann}
 \email{lukas.pietzschmann@uni-ulm.de}
@@ -36,5 +47,35 @@
 \date\today
 
 \begin{document}
-	\maketitle
+\maketitle
+
+\section{Why we need Hydrogen}
+\begin{frame}
+	\frametitle[\cite{tempdata,lenssen2019}]{Global Warming}
+	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
+	\pgfplotstableread[col sep=comma,]{temps.csv}\temps
+	\begin{wide}
+		\href{https://data.giss.nasa.gov/gistemp/graphs_v4}{\begin{tikzpicture}
+			\begin{axis}[axis background/.style={fill=accent!3},
+					ylabel=Temperature Anomaly ($^\circ C$), axis line style={lw,rounded corners},
+					xticklabel={\pgfmathint{\tick}\pgfmathresult},
+					legend style={
+						font=\scriptsize,
+						cells={anchor=west},
+						legend pos=north west,
+					},
+				]
+				\addplot[color=accent, smooth] table [x=Year,y=NoSmoothing,col sep=comma]{\temps};
+				\addlegendentry{Annual Mean}
+				\addplot[color=red, smooth] table [x=Year,y=Lowess,col sep=comma]{\temps};
+				\addlegendentry{Lowess Smoothing}
+			\end{axis}
+		\end{tikzpicture}}
+	\end{wide}
+\end{frame}
+
+\begin{frame}
+	\frametitle{References}
+	\printbibliography
+\end{frame}
 \end{document}
