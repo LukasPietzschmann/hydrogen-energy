@@ -21,6 +21,8 @@
 \usepackage{firamath-otf}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{fontawesome}
+\usepackage{tikzpingus}
 
 
 \addbibresource{refs.bib}
@@ -115,6 +117,8 @@
 	\end{wide}
 \end{frame}
 
+\newsavebox\sadpingu
+\savebox\sadpingu{\tikz{\pingu[small size,eyes=sad,left wing shock,right wing grab]}}
 \begin{frame}
 	\frametitle{And where's the Problem?}
 	\begin{itemize}
@@ -129,8 +133,13 @@
 		\item Only 3\% of cars in Germany drive diesel or gasoline free
 		\item Transportation has a 20\% share in Germany's emissions
 	\end{itemize}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=south west,shift={(1cm,-1mm)}] at (current page.south west) {\scalebox{.8}{\usebox\sadpingu}};
+	\end{tikzpicture}
 \end{frame}
 
+\newsavebox\fixpingu
+\savebox\fixpingu{\tikz{\pingu[eyes=wink,heart=accent,wings wave, banner=Let's fix that]}}
 \begin{frame}
 	\frametitle[Or is it?]{But there's a Solution!}
 	\begin{itemize}
@@ -142,8 +151,10 @@
 	\begin{itemize}
 		\item The sun does not shine at night
 		\item Current electric cars also aren't perfect in the long run
-	\end{itemize}\medskip
-	Let's fix this!
+	\end{itemize}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=south,rotate=-30] at (current page.south west) {\scalebox{.8}{\usebox\fixpingu}};
+	\end{tikzpicture}
 	\talknote{Bei starkem Wind müssen Windräder abgeschaltet werden}
 	\talknote{In der Nacht haben wir zu wenig Strom}
 	\talknote{Wir müssen speichern}
