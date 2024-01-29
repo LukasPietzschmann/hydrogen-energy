@@ -23,6 +23,7 @@
 \usepackage{pgfplotstable}
 \usepackage{fontawesome}
 \usepackage{tikzpingus}
+\usepackage{tikzducks}
 \usepackage{pdfpc}
 
 \newcommand<>{\talknote}[1]{\only#2{\pdfpcnote{- #1}\relax}}
@@ -175,11 +176,96 @@
 \end{frame}
 
 \section{How we can store Energy}
+\newsavebox\duckforscale
+\savebox\duckforscale{\tikz\duck[peakedcap=blue];}
+\newsavebox\pumped
+\savebox\pumped{\begin{tikzpicture}[overlay,remember picture,decoration={random steps,segment length=3mm,amplitude=1mm}]
+	\pgfmathsetseed{3}
+	\coordinate (end) at ([xshift=-2cm]current page.east);
+	\coordinate (end2) at ([xshift=2cm]current page.west);
+	\coordinate (cliff) at ([shift={(-5mm,7mm)}]end);
+	\path[draw=blue,lw,rnd,fill=blue] ([shift={(2mm,6mm)}]current page.east) -- ([shift={(-4mm,6mm)}]end) -- ([shift={(-4mm,-4mm)}]end) -- ([xshift=2mm]current page.east) -- cycle;
+	\path[draw=blue,lw,rnd,fill=blue] ([yshift=-3cm]current page.west) -- ([yshift=-3cm]current page.east) -- (current page.south east) -- (current page.south west) -- cycle;
+	\path[draw,lw,decorate,rnd,fill=lightgray] (current page.west) -- (end2) -- ([xshift=-2cm]current page.south) -- ([xshift=-2mm]current page.south west) --cycle;
+	\path[draw,lw,decorate,rnd,fill=lightgray] ([xshift=2mm]current page.east) -- (end) -- (cliff) -- ([shift={(-2mm,2mm)}]cliff) -- ([xshift=2cm]current page.south) -- ([xshift=2mm]current page.south east) --cycle;
+	\node at ([shift={(-5mm,6.5mm)}]current page.east) {\scalebox{.1}{\usebox\duckforscale}};
+
+	\coordinate (A) at ([xshift=-10mm]current page.east);
+	\coordinate (B) at ([shift={(25mm,9mm)}]current page.south);
+	\path[draw=blue,line width=3mm,rounded corners=0.05mm] (A) |- (B);
+	\path[draw,rnd,lw] ([xshift=-1.5mm]A) |- ([yshift=1.5mm]B);
+	\path[draw,rnd,lw] ([xshift=1.5mm]A) |- ([yshift=-1.5mm]B);
+	\node[roundednode,minimum height=5mm,inner sep=2.5pt,rotate=-30] at (B) {};
+	\node[roundednode,minimum width=5mm,inner sep=2.5pt] at (A) {};
+\end{tikzpicture}}
 \begin{frame}
-	\frametitle{Pumped storage plant}
-	\begin{itemize}
-		\item Or how we call'em: \enquote{Pumpspeicherkraftwerk}
-	\end{itemize}
+	\frametitle[Pumpspeicherkraftwerk]{Pumped storage plant}
+	\parbox{8cm}{\begin{itemize}
+		\item If there's too much energy, water get's pumped up
+		\item When energy is needed, the water is sent down through turbines
+	\end{itemize}}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node at (current page) {\usebox\pumped};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\frametitle[Pumpspeicherkraftwerk]{Pumped storage plant}
+	\begin{wide}
+	\begin{columns}[c]
+		\begin{column}{0.45\textwidth}
+			\begin{block}[Pros]
+				\begin{itemize}
+					\item They can react quickly to the demand for electricity
+					\item Only a third of the electricity generated is lost
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{alertblock}[Cons]
+				\begin{itemize}
+					\item Germany's topography makes it difficult to build many of them
+					\item High investment and operating costs
+					\item They can only store large amounts of energy
+				\end{itemize}
+			\end{alertblock}
+		\end{column}
+	\end{columns}
+	\end{wide}
+\end{frame}
+
+\newsavebox\techpingu
+\savebox\techpingu{\tikz{\pingu[left wing=wave,laptop left,lightsaber right=blue,headphone=accent,vr-headset,vr-headset hair,heart=accent]}}
+\begin{frame}
+	\frametitle{Lithium-ion battery}
+	\begin{columns}[b]
+		\begin{column}{0.7\textwidth}
+			\begin{block}[Pros]
+				\begin{itemize}
+					\item Already very common
+					\item Can store large and small amounts of energy
+				\end{itemize}
+			\end{block}
+			\begin{alertblock}[Cons]
+				\begin{itemize}
+					\item Lithium is rare
+					\item Its extraction is complex
+				\end{itemize}
+			\end{alertblock}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\tikz\node{\scalebox{.8}{\usebox\techpingu}};
+		\end{column}
+	\end{columns}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[roundednode,minimum width=1.5cm,minimum
+		height=2cm,fill=lightgray!20,anchor=north east,shift={(-1cm,-1cm)}] (B)
+		at (current page.north east) {\Huge\faBolt};
+		\coordinate (P) at ($(B.north west)!0.5!(B.north)$);
+		\coordinate (M) at ($(B.north)!0.5!(B.north east)$);
+		\node[roundednode,rounded corners=1pt,minimum width=4mm,inner sep=2pt,anchor=south,yshift=-1px,fill=lightgray!20] at (P) {};
+		\node[roundednode,rounded corners=1pt,minimum width=4mm,inner sep=2pt,anchor=south,yshift=-1px,fill=lightgray!20] at (M) {};
+	\end{tikzpicture}
 \end{frame}
 
 \begingroup
