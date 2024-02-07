@@ -26,6 +26,11 @@
 \usepackage{tikzducks}
 \usepackage{pdfpc}
 
+\usetikzlibrary{shapes}
+\tikzset{pipelinestep/.style={lw,rnd,shape=signal,signal from=west,signal pointer angle=130,minimum width=3cm,minimum height=2cm,draw=black,fill=lightgray!30}}
+
+\def\info#1{\begingroup\color{gray}\scriptsize#1\endgroup}
+
 \newcommand<>{\talknote}[1]{\only#2{\pdfpcnote{- #1}\relax}}
 
 \addbibresource{refs.bib}
@@ -128,9 +133,9 @@
 \end{frame}
 
 \newsavebox\fixpingu
-\savebox\fixpingu{\tikz{\pingu[eyes=wink,heart=accent,wings wave, banner=Let's fix that]}}
+\savebox\fixpingu{\tikz{\pingu[eyes=wink,heart=accent,wings wave, banner=Let's fix the world]}}
 \begin{frame}
-	\frametitle{The Plan}
+	\frametitle{How to overcome the problem}
 	Here's the plan:
 	\begin{block}
 		\begin{enumerate}
@@ -206,8 +211,117 @@
 	\end{wide}
 \end{frame}
 
+\newsavebox\stepab
+\newsavebox\stepbb
+\newsavebox\stepcb
+\savebox\stepab{\tikz\node[pipelinestep,text width=2.2cm, align=center]{Electrolysis};}
+\savebox\stepbb{\tikz\node[pipelinestep,text width=2.2cm, align=center]{Storing};}
+\savebox\stepcb{\tikz\node[pipelinestep,text width=2.2cm, align=center]{Energy recovery};}
 \begin{frame}
-	\frametitle{Hydrogen Batteries}
+	\frametitle{Hydrogen as a source of energy}
+	\begin{wide}\centering
+	\begin{itemize}
+		\item Hydrogen is the most common element in the universe~\cite{imagine2021}
+		\item On earth, it's mainly found in water
+	\end{itemize}\smallskip
+	\begin{itemize}
+		\item Three steps to success:
+	\end{itemize}\bigskip
+	\begin{tikzpicture}[node distance=2ex]
+		\node (A) [] {\usebox\stepab};
+		\node (B) [right=of A] {\usebox\stepbb};
+		\node (C) [right=of B] {\usebox\stepcb};
+	\end{tikzpicture}
+	\begin{columns}[c]
+		\begin{column}{0.33\textwidth}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+		\end{column}
+	\end{columns}
+	\end{wide}
+\end{frame}
+
+
+\newsavebox\morepingu
+\savebox\morepingu{\tikz{\pingu[left eye=wink,wings wave,banner=And many more,banner sticks length=1.6cm]}}
+\begin{frame}
+	\frametitle{Hydrogen as a source of energy}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepab}};
+	\end{tikzpicture}
+	\begin{itemize}
+		\item We use (green) electricity to split water into hydrogen and oxygen
+		\item The electric energy gets transformed into chemical energy
+		\item Efficiency of approximately 60\% to 85\%~\cite{milanzi2018}
+	\end{itemize}\medskip
+	\begin{itemize}
+		\item But electrolysis isn't the only way to produce hydrogen
+	\end{itemize}\medskip
+	\begin{wide}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[shift={(2.5cm,3.1cm)}] at (current page.south west) {\scalebox{.6}{\usebox\morepingu}};
+	\end{tikzpicture}
+	\begin{columns}[c]
+		\begin{column}{0.33\textwidth}
+			\begin{beamerbox}{green}{}
+				Hydrogen from renewable electricity
+			\end{beamerbox}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+			\begin{beamerbox}{gray}{}
+				Hydrogen from fossil fuels (CO\textsubscript2 released)
+			\end{beamerbox}
+		\end{column}
+		\begin{column}{0.33\textwidth}
+			\begin{beamerbox}{blue}{}
+				Hydrogen from fossil fuels (CO\textsubscript2 captured)
+			\end{beamerbox}
+		\end{column}
+	\end{columns}
+	\end{wide}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hydrogen as a source of energy}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepbb}};
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Hydrogen can be safely stored
+		\item Conventional methods of storing hydrogen include
+			\smallskip\begin{itemize}
+				\item Compressed hydrogen\hfill\info{often used in cars}
+				\item Liquid hydrogen\hfill\info{used during transportation}
+				\item Liquid organic hydrogen carriers\hfill\info{no compression or
+					cooling needed}
+			\end{itemize}\smallskip
+		\item Every method has its own advantages and disadvantages
+		\item But we have the technology to store hydrogen in different capacities for
+			different amounts of time
+	\end{itemize}
+	\begin{uncoverenv}<2->
+	\begin{tikzpicture}[overlay,remember picture]
+		\filldraw[darkgray,opacity=0.5] (current page.south west) rectangle (current page.north east);
+		\node[squarenode,rnd,fill=white,inner sep=2pt] at (current page) (T) {\includegraphics[width=0.6\paperwidth]{speicherkapazitaet.jpg}};
+		\node[yshift=-2mm] at (T.south) {\tiny\citetitle{topler2019}~\parencite{topler2019}};
+	\end{tikzpicture}
+	\end{uncoverenv}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hydrogen as a source of energy}
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepcb}};
+	\end{tikzpicture}
+	\begin{itemize}
+		\item Again, there are different methods to recover energy from hydrogen
+		\item Fuel cells are the most common method
+		\item In a fuel cell, hydrogen and oxygen react to produce electricity, heat, and water
+		\item In this process, roughly 60\% of the energy is converted into
+			electricity~\cite{tuv}
+	\end{itemize}
 \end{frame}
 
 \begingroup
