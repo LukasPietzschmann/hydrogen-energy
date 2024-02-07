@@ -55,114 +55,80 @@
 \maketitle
 
 \section{Why there's a Problem}
-\begin{frame}
-	\frametitle[\cite{tempdata,lenssen2019}]{Global Warming}
+\newsavebox\warmingb
+\newsavebox\sourcesb
+\savebox\warmingb{
 	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
 	\pgfplotstableread[col sep=comma,]{temps.csv}\temps
-	\begin{wide}
-		\href{https://data.giss.nasa.gov/gistemp/graphs_v4}{\begin{tikzpicture}
-			\begin{axis}[axis background/.style={fill=accent!3},
-					ylabel=Temperature Anomaly ($^\circ C$), axis line style={lw,rounded corners},
-					xticklabel={\pgfmathint{\tick}\pgfmathresult},
-					legend style={
-						font=\scriptsize,
-						cells={anchor=west},
-						legend pos=north west,
-					},
-				]
-				\addplot[color=accent, smooth] table [x=Year,y=NoSmoothing,col sep=comma]{\temps};
-				\addlegendentry{Annual Mean}
-				\addplot[color=red, smooth] table [x=Year,y=Lowess,col sep=comma]{\temps};
-				\addlegendentry{Lowess Smoothing}
-			\end{axis}
-		\end{tikzpicture}}
-	\end{wide}
-\end{frame}
-
-\begin{frame}
-	\frametitle[\cite{ritchie2020}]{Energy consumption by source}
+	\href{https://data.giss.nasa.gov/gistemp/graphs_v4}{\begin{tikzpicture}
+		\begin{axis}[axis background/.style={fill=accent!3},
+			ylabel=Temperature Anomaly ($^\circ C$), axis line style={lw,rounded corners},
+			xticklabel={\pgfmathint{\tick}\pgfmathresult},
+			legend style={
+				font=\scriptsize,
+				cells={anchor=west},
+				legend pos=north west,
+			},
+		]
+		\addplot[color=accent, smooth] table [x=Year,y=NoSmoothing,col sep=comma]{\temps};
+		\addlegendentry{Annual Mean}
+		\addplot[color=red, smooth] table [x=Year,y=Lowess,col sep=comma]{\temps};
+		\addlegendentry{Lowess Smoothing}
+	\end{axis}
+\end{tikzpicture}}}
+\savebox\sourcesb{
 	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
 	\pgfplotstableread[col sep=comma,]{energy.csv}\energy
-	\begin{wide}
 		\href{https://ourworldindata.org/energy-mix}{\begin{tikzpicture}
-			\begin{axis}[axis background/.style={fill=accent!3},
-					ylabel=Evergy Consumption (TWh), axis line style={lw,rounded corners},
-					xticklabel={\pgfmathint{\tick}\pgfmathresult},
-					legend style={
-						font=\scriptsize,
-						cells={anchor=west},
-						legend pos=north west,
-					},
-					stack plots=y
-				]
-				\addplot[color=green, smooth] table [x=year,y=other,col sep=comma]{\energy};
-				\addlegendentry{Other}
-				% \addplot[color=brown, smooth] table [x=year,y=bio,col sep=comma]{\energy};
-				% \addlegendentry{Biofuels}
-				\addplot[color=yellow, smooth] table [x=year,y=solar,col sep=comma]{\energy};
-				\addlegendentry{Solar}
-				\addplot[color=blue, smooth] table [x=year,y=wind,col sep=comma]{\energy};
-				\addlegendentry{Wind}
-				\addplot[color=cyan, smooth] table [x=year,y=hydro,col sep=comma]{\energy};
-				\addlegendentry{Hydropower}
-				\addplot[color=red, smooth] table [x=year,y=nuclear,col sep=comma]{\energy};
-				\addlegendentry{Nuclear}
-				\addplot[color=violet, smooth] table [x=year,y=gas,col sep=comma]{\energy};
-				\addlegendentry{Gas}
-				\addplot[color=teal, smooth] table [x=year,y=oil,col sep=comma]{\energy};
-				\addlegendentry{Oil}
-				\addplot[color=orange, smooth] table [x=year,y=coal,col sep=comma]{\energy};
-				\addlegendentry{Coal}
-				% \addplot[color=darkmaroon, smooth] table [x=year,y=bio,col sep=comma]{\energy};
-				% \addlegendentry{Biomass}
-			\end{axis}
-		\end{tikzpicture}}
-	\end{wide}
+	\begin{axis}[axis background/.style={fill=accent!3},
+			ylabel=Evergy Consumption (TWh), axis line style={lw,rounded corners},
+			xticklabel={\pgfmathint{\tick}\pgfmathresult},
+			legend style={
+				font=\scriptsize,
+				cells={anchor=west},
+				legend pos=north west,
+			},
+			stack plots=y
+		]
+		\addplot[color=green, smooth] table [x=year,y=other,col sep=comma]{\energy};
+		\addlegendentry{Other}
+		% \addplot[color=brown, smooth] table [x=year,y=bio,col sep=comma]{\energy};
+		% \addlegendentry{Biofuels}
+		\addplot[color=yellow, smooth] table [x=year,y=solar,col sep=comma]{\energy};
+		\addlegendentry{Solar}
+		\addplot[color=blue, smooth] table [x=year,y=wind,col sep=comma]{\energy};
+		\addlegendentry{Wind}
+		\addplot[color=cyan, smooth] table [x=year,y=hydro,col sep=comma]{\energy};
+		\addlegendentry{Hydropower}
+		\addplot[color=red, smooth] table [x=year,y=nuclear,col sep=comma]{\energy};
+		\addlegendentry{Nuclear}
+		\addplot[color=violet, smooth] table [x=year,y=gas,col sep=comma]{\energy};
+		\addlegendentry{Gas}
+		\addplot[color=teal, smooth] table [x=year,y=oil,col sep=comma]{\energy};
+		\addlegendentry{Oil}
+		\addplot[color=orange, smooth] table [x=year,y=coal,col sep=comma]{\energy};
+		\addlegendentry{Coal}
+		% \addplot[color=darkmaroon, smooth] table [x=year,y=bio,col sep=comma]{\energy};
+		% \addlegendentry{Biomass}
+	\end{axis}
+\end{tikzpicture}}}
+\begin{frame}
+	\frametitle[\cite{tempdata,lenssen2019}]{Global Warming}
+	\wide\usebox\warmingb\endwide
 \end{frame}
 
 \newsavebox\sadpingu
 \savebox\sadpingu{\tikz{\pingu[small size,eyes=sad,left wing shock,right wing grab]}}
 \begin{frame}
-	\frametitle{And where's the Problem?}
-	\begin{itemize}
-		\item Our energy consumption is steadily increasing
-		\item Coal, oil, and gas consistently have the highest share of all energy
-			suppliers, while being the least sustainable
-		\item 84\% of German emissions are energy-related~(37\% directly stem from energy
-			production)~\cite{uba2024}
-	\end{itemize}\medskip
-	That's not all~\ldots\medskip
-	\begin{itemize}
-		\item Only 3\% of cars in Germany drive diesel or gasoline free
-		\item Transportation has a 20\% share in Germany's emissions
-	\end{itemize}
+	\frametitle[\cite{ritchie2020}]{Energy consumption by source}
+	\wide\usebox\sourcesb\endwide
 	\begin{tikzpicture}[overlay,remember picture]
-		\node[anchor=south west,shift={(1cm,-1mm)}] at (current page.south west) {\scalebox{.8}{\usebox\sadpingu}};
+		\node[anchor=south east,shift={(-6mm,-1mm)}] at (current page.south east) {\scalebox{.8}{\usebox\sadpingu}};
 	\end{tikzpicture}
 \end{frame}
 
 \newsavebox\fixpingu
 \savebox\fixpingu{\tikz{\pingu[eyes=wink,heart=accent,wings wave, banner=Let's fix that]}}
-\begin{frame}
-	\frametitle[Or is it?]{But there's a Solution!}
-	\begin{itemize}
-		\item If we could fully move to renewable energy sources
-		\item And get rid of diesel and gasoline powered cars
-		\item We can get over the current problems
-	\end{itemize}\medskip
-	But~\ldots\medskip
-	\begin{itemize}
-		\item The sun does not shine at night
-		\item Current electric cars also aren't perfect in the long run
-	\end{itemize}
-	\begin{tikzpicture}[overlay,remember picture]
-		\node[anchor=south,rotate=-30] at (current page.south west) {\scalebox{.8}{\usebox\fixpingu}};
-	\end{tikzpicture}
-	\talknote{Bei starkem Wind müssen Windräder abgeschaltet werden}
-	\talknote{In der Nacht haben wir zu wenig Strom}
-	\talknote{Wir müssen speichern}
-\end{frame}
-
 \begin{frame}
 	\frametitle{The Plan}
 	Here's the plan:
@@ -173,13 +139,18 @@
 		\end{enumerate}
 	\end{block}
 	We ignore 1. for now and focus on 2.
+	\begin{tikzpicture}[overlay,remember picture]
+		\node[anchor=south,rotate=-30] at (current page.south west) {\scalebox{.8}{\usebox\fixpingu}};
+	\end{tikzpicture}
 \end{frame}
 
 \section{How we can store Energy}
 \newsavebox\duckforscale
-\savebox\duckforscale{\tikz\duck[peakedcap=blue];}
 \newsavebox\pumped
-\savebox\pumped{\begin{tikzpicture}[overlay,remember picture,decoration={random steps,segment length=3mm,amplitude=1mm}]
+\newsavebox\techpingu
+\savebox\duckforscale{\tikz\duck[peakedcap=blue];}
+\savebox\pumped{\begin{tikzpicture}[decoration={random steps,segment length=3mm,amplitude=1mm}]
+	\clip (1,0) rectangle (16,6);
 	\pgfmathsetseed{3}
 	\coordinate (end) at ([xshift=-2cm]current page.east);
 	\coordinate (end2) at ([xshift=2cm]current page.west);
@@ -198,74 +169,44 @@
 	\node[roundednode,minimum height=5mm,inner sep=2.5pt,rotate=-30] at (B) {};
 	\node[roundednode,minimum width=5mm,inner sep=2.5pt] at (A) {};
 \end{tikzpicture}}
+\savebox\techpingu{\tikz{\pingu[left wing=wave,laptop left,lightsaber right=blue,headphone=accent,vr-headset,vr-headset hair,heart=accent]}}
 \begin{frame}
-	\frametitle[Pumpspeicherkraftwerke]{Pumped Storage Plants}
-	\parbox{8cm}{\begin{itemize}
-		\item If there's too much energy, water get's pumped up
-		\item When energy is needed, the water is sent down through turbines
-	\end{itemize}}
-	\begin{tikzpicture}[overlay,remember picture]
-		\node at (current page) {\usebox\pumped};
-	\end{tikzpicture}
-\end{frame}
-
-\begin{frame}
-	\frametitle[Pumpspeicherkraftwerke]{Pumped Storage Plants}
+	\frametitle{Existing energy storage methods}
 	\begin{wide}
 	\begin{columns}[c]
-		\begin{column}{0.45\textwidth}
-			\begin{block}[Pros]
-				\begin{itemize}
-					\item They can react quickly to the demand for electricity
-					\item Only a third of the electricity generated is lost
-				\end{itemize}
-			\end{block}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+			\centerline{Pumped Storage Plants}\par\medskip
+			\begin{tikzpicture}
+				\node[outer sep=0pt,inner sep=0pt] (P) {\scalebox{.4}{\usebox\pumped}};
+				\node[roundednode,draw=white,outer sep=0pt,inner sep=0pt,fill=none,fit=(P)] {};
+				\node[roundednode,outer sep=0pt,inner sep=0pt,dashed,fill=none,fit=(P)] {};
+			\end{tikzpicture}
+			\end{center}\medskip\small
+			\begin{itemize}
+				\item[\color{accent}\textbullet] Only a third of the electricity generated is lost
+				\item[\color{red}\textbullet] High investment and operating costs
+			\end{itemize}
 		\end{column}
-		\begin{column}{0.45\textwidth}
-			\begin{alertblock}[Cons]
-				\begin{itemize}
-					\item Germany's topography makes it difficult to build many of them
-					\item High investment and operating costs
-					\item They can only store large amounts of energy
-				\end{itemize}
-			\end{alertblock}
+		\begin{column}{0.5\textwidth}
+			\begin{center}
+			\centerline{Lithium-ion Batteries}\par\medskip
+			\begin{tikzpicture}
+				\node[outer sep=2mm] (P) {\scalebox{.5}{\usebox\techpingu}};
+				\node[roundednode,dashed,fill=lightgray!15,fit=(P),node on layer=background] {};
+			\end{tikzpicture}
+			\end{center}\medskip\small
+			\begin{itemize}
+				\item[\color{accent}\textbullet] Already very common
+				\item[\color{red}\textbullet] Lithium is rare and its extraction is complex
+			\end{itemize}
 		\end{column}
 	\end{columns}
 	\end{wide}
 \end{frame}
 
-\newsavebox\techpingu
-\savebox\techpingu{\tikz{\pingu[left wing=wave,laptop left,lightsaber right=blue,headphone=accent,vr-headset,vr-headset hair,heart=accent]}}
 \begin{frame}
-	\frametitle{Lithium-ion Batteries}
-	\begin{columns}[b]
-		\begin{column}{0.7\textwidth}
-			\begin{block}[Pros]
-				\begin{itemize}
-					\item Already very common
-					\item Can store large and small amounts of energy
-				\end{itemize}
-			\end{block}
-			\begin{alertblock}[Cons]
-				\begin{itemize}
-					\item Lithium is rare
-					\item Its extraction is complex
-				\end{itemize}
-			\end{alertblock}
-		\end{column}
-		\begin{column}{0.2\textwidth}
-			\tikz\node{\scalebox{.8}{\usebox\techpingu}};
-		\end{column}
-	\end{columns}
-	\begin{tikzpicture}[overlay,remember picture]
-		\node[roundednode,minimum width=1.5cm,minimum
-		height=2cm,fill=lightgray!20,anchor=north east,shift={(-1cm,-1cm)}] (B)
-		at (current page.north east) {\Huge\faBolt};
-		\coordinate (P) at ($(B.north west)!0.5!(B.north)$);
-		\coordinate (M) at ($(B.north)!0.5!(B.north east)$);
-		\node[roundednode,rounded corners=1pt,minimum width=4mm,inner sep=2pt,anchor=south,yshift=-1px,fill=lightgray!20] at (P) {};
-		\node[roundednode,rounded corners=1pt,minimum width=4mm,inner sep=2pt,anchor=south,yshift=-1px,fill=lightgray!20] at (M) {};
-	\end{tikzpicture}
+	\frametitle{Hydrogen Batteries}
 \end{frame}
 
 \begingroup
