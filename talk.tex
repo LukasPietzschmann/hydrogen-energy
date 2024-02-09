@@ -342,6 +342,10 @@
 \end{frame}
 
 \section{Our roadmap}
+\newsavebox\mathpingu
+\savebox\mathpingu{
+	\tikz{\pingu[staff left,monocle left,bow tie=accent,small size]}
+}
 \begin{frame}
 	\frametitle{What hydrogen can do and what i can't}
 	\begin{itemize}
@@ -353,6 +357,9 @@
 			increasing the efficiency
 		\item But infrastructure gaps are still an unsolved problem
 	\end{itemize}
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south west,yshift=-1cm,xshift=-1cm] at (current page.south west) {\rotatebox{-20}{\usebox\mathpingu}};
+	\end{tikzpicture}
 \end{frame}
 
 \section{References}
