@@ -284,10 +284,23 @@
 	\end{wide}
 \end{frame}
 
+\makeatletter
+\newsavebox\storeb
+\savebox\storeb{\begin{tikzpicture}[node distance=7mm]
+	\node[roundednode,fill=blue!5,minimum width=\beamer@leftsidebar, minimum height=3.5cm] (A) {11\kern2pt000 l};
+	\node[roundednode,fill=blue!5,minimum width=\beamer@leftsidebar, minimum height=8mm,below=of A] (B) {24 l};
+	\node[roundednode,fill=blue!5,minimum width=\beamer@leftsidebar, minimum height=3mm,below=of B] (C) {14 l};
+
+	\node[below] at (A.south) {\scriptsize Ambient pressure};
+	\node[below] at (B.south) {\scriptsize Compressed};
+	\node[below] at (C.south) {\scriptsize Liquified};
+\end{tikzpicture}}
+\makeatother
 \begin{frame}
 	\frametitle{Hydrogen as a source of energy}
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepbb}};
+		\node[anchor=west,yshift=-5.5mm,xshift=4mm] at (current page.west) {\usebox\storeb};
 	\end{tikzpicture}
 	\begin{itemize}
 		\item Hydrogen can be safely stored
