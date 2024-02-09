@@ -360,6 +360,29 @@
 	\end{tikzpicture}
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{Current state}
+	\begin{wide}
+		\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
+		\pgfplotstableread[col sep=comma]{trend.csv}\trend
+		\href{https://trends.google.com/trends/explore?date=all&geo=DE&q=Wasserstoff}{\begin{tikzpicture}
+			\begin{axis}[axis background/.style={fill=accent!3},
+					axis line style={lw,rounded corners},
+					xticklabel={\pgfmathint{\tick}\pgfmathresult},
+					legend style={
+						font=\scriptsize,
+						cells={anchor=west},
+						legend pos=north west,
+					},
+				]
+				\addplot[color=accent, smooth] table [x=date,y=anz]{\trend};
+				\addlegendentry{Interest per Month}
+			\end{axis}
+		\end{tikzpicture}}
+	\end{wide}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Current state}
 	\begin{itemize}
