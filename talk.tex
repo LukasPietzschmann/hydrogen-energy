@@ -61,27 +61,7 @@
 \maketitle
 
 \section{Why there's a Problem}
-\newsavebox\warmingb
 \newsavebox\sourcesb
-\savebox\warmingb{
-	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
-	\pgfplotstableread[col sep=comma,]{temps.csv}\temps
-	\href{https://data.giss.nasa.gov/gistemp/graphs_v4}{\begin{tikzpicture}
-		\begin{axis}[axis background/.style={fill=accent!3},
-			ylabel=Temperature Anomaly ($^\circ C$), axis line style={lw,rounded corners},
-			xticklabel={\pgfmathint{\tick}\pgfmathresult},
-			legend style={
-				font=\scriptsize,
-				cells={anchor=west},
-				legend pos=north west,
-			},
-		]
-		\addplot[color=accent, smooth] table [x=Year,y=NoSmoothing,col sep=comma]{\temps};
-		\addlegendentry{Annual Mean}
-		\addplot[color=red, smooth] table [x=Year,y=Lowess,col sep=comma]{\temps};
-		\addlegendentry{Lowess Smoothing}
-	\end{axis}
-\end{tikzpicture}}}
 \savebox\sourcesb{
 	\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
 	\pgfplotstableread[col sep=comma,]{energy.csv}\energy
@@ -120,7 +100,26 @@
 \end{tikzpicture}}}
 \begin{frame}
 	\frametitle[\cite{tempdata,lenssen2019}]{Global Warming}
-	\wide\usebox\warmingb\endwide
+	\begin{wide}
+		\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
+		\pgfplotstableread[col sep=comma,]{temps.csv}\temps
+		\href{https://data.giss.nasa.gov/gistemp/graphs_v4}{\begin{tikzpicture}
+			\begin{axis}[axis background/.style={fill=accent!3},
+				ylabel=Temperature Anomaly ($^\circ C$), axis line style={lw,rounded corners},
+				xticklabel={\pgfmathint{\tick}\pgfmathresult},
+				legend style={
+					font=\scriptsize,
+					cells={anchor=west},
+					legend pos=north west,
+				},
+			]
+			\addplot[color=accent, smooth] table [x=Year,y=NoSmoothing,col sep=comma]{\temps};
+			\addlegendentry{Annual Mean}
+			\addplot[color=red, smooth] table [x=Year,y=Lowess,col sep=comma]{\temps};
+			\addlegendentry{Lowess Smoothing}
+		\end{axis}
+		\end{tikzpicture}}
+	\end{wide}
 \end{frame}
 
 \newsavebox\sadpingu
