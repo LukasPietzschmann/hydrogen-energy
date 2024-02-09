@@ -27,6 +27,7 @@
 \usepackage{pdfpc}
 \usepackage{amsmath}
 
+\usepgfplotslibrary{dateplot}
 \usetikzlibrary{shapes,tikzmark}
 \tikzset{pipelinestep/.style={lw,rnd,shape=signal,signal from=west,signal pointer angle=130,minimum width=3cm,minimum height=2cm,draw=black,fill=lightgray!30}}
 
@@ -356,16 +357,17 @@
 		\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
 		\pgfplotstableread[col sep=comma]{trend.csv}\trend
 		\href{https://trends.google.com/trends/explore?date=all&geo=DE&q=Wasserstoff}{\begin{tikzpicture}
-			\begin{axis}[axis background/.style={fill=accent!3},
+			\begin{axis}[date coordinates in=x,axis background/.style={fill=accent!3},
 					axis line style={lw,rounded corners},
-					xticklabel={\pgfmathint{\tick}\pgfmathresult},
+					xticklabel={\year},
+					x tick label style={rotate=45,anchor=east},
 					legend style={
 						font=\scriptsize,
 						cells={anchor=west},
 						legend pos=north west,
 					},
 				]
-				\addplot[color=accent, smooth] table [x=date,y=anz]{\trend};
+				\addplot[color=accent,smooth] table [x=date,y=anz]{\trend};
 				\addlegendentry{Interest per Month}
 			\end{axis}
 		\end{tikzpicture}}
