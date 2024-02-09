@@ -127,10 +127,16 @@
 \savebox\sadpingu{\tikz{\pingu[small size,eyes=sad,left wing shock,right wing grab]}}
 \begin{frame}
 	\frametitle[\cite{ritchie2020}]{Energy consumption by source}
-	\wide\usebox\sourcesb\endwide
+	\begin{wide}
+		\usebox\sourcesb
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=south east,shift={(-6mm,-1mm)}] at (current page.south east) {\scalebox{.8}{\usebox\sadpingu}};
 	\end{tikzpicture}
+	\begin{itemize}[<+(1)->]
+		\item Note that the data shows the global energy consumption
+		\item In Germany its not as bad
+	\end{itemize}
+	\end{wide}
 \end{frame}
 
 \newsavebox\fixpingu
@@ -300,8 +306,7 @@
 			\smallskip\begin{itemize}
 				\item Compressed hydrogen\hfill\info{often used in cars}
 				\item Liquid hydrogen\hfill\info{used during transportation}
-				\item Liquid organic hydrogen carriers\hfill\info{no compression or
-					cooling needed}
+				\item Underground hydrogen storage \hfill\info{can store extremely large amounts}
 			\end{itemize}\smallskip
 		\item We have the technology to store hydrogen in different capacities for
 			different amounts of time
@@ -351,7 +356,7 @@
 
 
 \begin{frame}
-	\frametitle{Current state}
+	\frametitle[\cite{google}]{Current state}
 	\pause
 	\begin{wide}
 		\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
