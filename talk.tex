@@ -27,7 +27,7 @@
 \usepackage{pdfpc}
 \usepackage{amsmath}
 
-\usetikzlibrary{shapes}
+\usetikzlibrary{shapes,tikzmark}
 \tikzset{pipelinestep/.style={lw,rnd,shape=signal,signal from=west,signal pointer angle=130,minimum width=3cm,minimum height=2cm,draw=black,fill=lightgray!30}}
 
 \def\info#1{\begingroup\color{gray}\scriptsize#1\endgroup}
@@ -358,6 +358,29 @@
 	\end{itemize}
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=south west,yshift=-1.3cm,xshift=-1.2cm] at (current page.south west) {\rotatebox{-20}{\usebox\mathpingu}};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Current state}
+	\begin{itemize}
+		\item Our current marked for green hydrogen is still small~\cite{schattauer2022}
+		\item But we have concrete plans for the future
+	\end{itemize}\bigskip
+	\begin{itemize}\setlength\itemsep{.8em}
+		\item[\tikzmark{a}] From 2025 on, we will import 500\kern2pt000 tons of green hydrogen from
+			Canada
+		\item[\tikzmark{b}] And in 2027/28, our network of hydrogen pipelines will be 1\kern2pt000~km
+			long
+		\item[\tikzmark{c}] An electrolysis capacity of at least 10 gigawatts is to be built by 2030
+	\end{itemize}
+	\begin{tikzpicture}[remember picture,overlay]
+		\coordinate (S) at ([shift={(-2mm,1.5mm)}]pic cs:a);
+		\coordinate (E) at ([shift={(-2mm,-1.1cm)}]pic cs:c);
+		\draw[-{Latex[round]},lw] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at (S) {};
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:b) {};
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:c) {};
 	\end{tikzpicture}
 \end{frame}
 
