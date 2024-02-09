@@ -298,7 +298,7 @@
 	\frametitle{Hydrogen as a source of energy}
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepbb}};
-		\node[anchor=west,yshift=-5.5mm,xshift=4mm,visible on=<6->] at (current page.west) {\usebox\storeb};
+		\node[anchor=west,yshift=-5.5mm,xshift=4mm,visible on=<7->] at (current page.west) {\usebox\storeb};
 	\end{tikzpicture}
 	\begin{itemize}[<+(1)->]
 		\item Hydrogen can be safely stored
@@ -308,12 +308,14 @@
 				\item Liquid hydrogen\hfill\info{used during transportation}
 				\item Underground hydrogen storage \hfill\info{can store extremely large amounts}
 			\end{itemize}\smallskip
+	\end{itemize}
+	\begin{itemize}[<+(2)->]
 		\item We have the technology to store hydrogen in different capacities for
 			different amounts of time
 		\item The example on the left illustrates how much space is required by 1kg of
 			hydrogen in different states of matter
 	\end{itemize}
-	\begin{uncoverenv}<9->
+	\begin{uncoverenv}<10->
 	\begin{tikzpicture}[overlay,remember picture]
 		\filldraw[darkgray,opacity=0.5] (current page.south west) rectangle (current page.north east);
 		\node[squarenode,rnd,fill=white,inner sep=2pt] at (current page) (T) {\includegraphics[width=0.6\paperwidth]{speicherkapazitaet.jpg}};
@@ -385,20 +387,22 @@
 		\item Our current marked for green hydrogen is still small~\cite{schattauer2022}
 		\item But we have concrete plans for the future~\cite{bund}
 	\end{itemize}\bigskip
-	\begin{itemize}[<+(1)->]\setlength\itemsep{.8em}
+	\begin{itemize}[<+(1)->]\setlength\itemsep{.7em}
 		\item[\tikzmark{a}] From 2025 on, we will import 500\kern2pt000 tons of green hydrogen from
 			Canada
 		\item[\tikzmark{b}] And in 2027/28, our network of hydrogen pipelines will be 1\kern2pt000~km
 			long
 		\item[\tikzmark{c}] An electrolysis capacity of at least 10 gigawatts is to be built by 2030
+		\item[\tikzmark{d}] Germany will need around 18 million tons of green hydrogen by 2050
 	\end{itemize}
 	\begin{tikzpicture}[remember picture,overlay]
 		\coordinate (S) at ([shift={(-2mm,1.5mm)}]pic cs:a);
-		\coordinate (E) at ([shift={(-2mm,-1.1cm)}]pic cs:c);
-		\draw[-{Latex[round,accent]},lw,visible on=<4->] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
+		\coordinate (E) at ([shift={(-2mm,-1.1cm)}]pic cs:d);
+		\draw[-{Latex[round,accent]},lw,visible on=<4->] (S) -- (E);
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<4->] at (S) {};
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<5->] at ([shift={(-2mm,1.5mm)}]pic cs:b) {};
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<6->] at ([shift={(-2mm,1.5mm)}]pic cs:c) {};
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<7->] at ([shift={(-2mm,1.5mm)}]pic cs:d) {};
 	\end{tikzpicture}
 \end{frame}
 
