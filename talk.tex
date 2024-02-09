@@ -341,21 +341,20 @@
 	\end{itemize}
 \end{frame}
 
-\section{Our roadmap}
+\section{How Hydrogen performs}
 \newsavebox\mathpingu
 \savebox\mathpingu{
 	\tikz{\pingu[staff left,monocle left,bow tie=accent,small size]}
 }
 \begin{frame}
-	\frametitle{What hydrogen can do and what i can't}
+	\frametitle{The overall efficiency}
 	\begin{itemize}
 		\item Let's try to calculate the overall efficiency\\\medskip
-			$\text{Electrolysis} \rightarrow \text{Storing/Transportation} \rightarrow \text{Energy recovery}$\\
+			$\text{Electrolysis} \rightarrow \text{Storing} \rightarrow \text{Energy recovery}$\\
 			$60\% \cdot 98\% \cdot 60\% = 35\%$\hfill\info{lower bound}\\
 			$85\% \cdot \textcolor{gray}{\underbrace{\textcolor{black}{98\%}}_{\text{\clap{Hydrogen stored in salt caverns \cite{ees2022}}}}} \cdot 60\% = 50\%$\hfill\info{upper bound}\\\medskip
 		\item Energy that's lost to heat can easily be used to heat buildings, thus
 			increasing the efficiency
-		\item But infrastructure gaps are still an unsolved problem
 	\end{itemize}
 	\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=south west,yshift=-1cm,xshift=-1cm] at (current page.south west) {\rotatebox{-20}{\usebox\mathpingu}};
