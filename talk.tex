@@ -136,15 +136,15 @@
 \savebox\fixpingu{\tikz{\pingu[eyes=wink,heart=accent,wings wave, banner=Let's fix the world]}}
 \begin{frame}
 	\frametitle{How to overcome the problem}
-	Here's the plan:
+	\onslide<2->Here's the plan:
 	\begin{block}
-		\begin{enumerate}
+		\begin{enumerate}[<+(2)->]
 			\item Produce as much energy from renewable sources as possible
 			\item Store it, so we have a backup when the sun doesn't shine
 		\end{enumerate}
-	\end{block}
+	\end{block}\onslide<+(2)->
 	We ignore 1. for now and focus on 2.
-	\begin{tikzpicture}[overlay,remember picture]
+	\onslide<1->\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=south,rotate=-30] at (current page.south west) {\scalebox{.8}{\usebox\fixpingu}};
 	\end{tikzpicture}
 \end{frame}
@@ -182,27 +182,27 @@
 	\begin{columns}[c]
 		\begin{column}{0.5\textwidth}
 			\begin{center}
-			\centerline{Pumped Storage Plants}\par\medskip
+			\onslide<2->\centerline{Pumped Storage Plants}\par\medskip
 			\begin{tikzpicture}
 				\node[outer sep=0pt,inner sep=0pt] (P) {\scalebox{.4}{\usebox\pumped}};
 				\node[roundednode,draw=white,outer sep=0pt,inner sep=0pt,fill=none,fit=(P)] {};
 				\node[roundednode,outer sep=0pt,inner sep=0pt,dashed,fill=none,fit=(P)] {};
 			\end{tikzpicture}
 			\end{center}\medskip\small
-			\begin{itemize}
+			\begin{itemize}[<+(2)->]
 				\item[\color{accent}\textbullet] Only a third of the electricity generated is lost
 				\item[\color{red}\textbullet] High investment and operating costs
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\begin{center}
-			\centerline{Lithium-ion Batteries}\par\medskip
+			\onslide<5->\centerline{Lithium-ion Batteries}\par\medskip
 			\begin{tikzpicture}
 				\node[outer sep=2mm] (P) {\scalebox{.5}{\usebox\techpingu}};
 				\node[roundednode,dashed,fill=lightgray!15,fit=(P),node on layer=background] {};
 			\end{tikzpicture}
 			\end{center}\medskip\small
-			\begin{itemize}
+			\begin{itemize}[<+(3)->]
 				\item[\color{accent}\textbullet] Already very common
 				\item[\color{red}\textbullet] Lithium is rare and its extraction is complex
 			\end{itemize}
@@ -220,26 +220,18 @@
 \begin{frame}
 	\frametitle{Hydrogen as a source of energy}
 	\begin{wide}
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item Hydrogen is the most common element in the universe~\cite{imagine2021}
 		\item On earth, it's primarily found in water
 	\end{itemize}\smallskip
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item Three steps to success:
 	\end{itemize}\bigskip\centering
 	\begin{tikzpicture}[node distance=2ex]
-		\node (A) [] {\usebox\stepab};
-		\node (B) [right=of A] {\usebox\stepbb};
-		\node (C) [right=of B] {\usebox\stepcb};
+		\node (A) [visible on=<5->] {\usebox\stepab};
+		\node (B) [visible on=<6->,right=of A] {\usebox\stepbb};
+		\node (C) [visible on=<7->,right=of B] {\usebox\stepcb};
 	\end{tikzpicture}
-	\begin{columns}[c]
-		\begin{column}{0.33\textwidth}
-		\end{column}
-		\begin{column}{0.33\textwidth}
-		\end{column}
-		\begin{column}{0.33\textwidth}
-		\end{column}
-	\end{columns}
 	\end{wide}
 \end{frame}
 
@@ -251,30 +243,30 @@
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepab}};
 	\end{tikzpicture}
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item We use (green) electricity to split water into hydrogen and oxygen
 		\item The electric energy gets transformed into chemical energy
 		\item Efficiency of approximately 60\% to 85\%~\cite{milanzi2018}
 	\end{itemize}\medskip
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item But electrolysis isn't the only way to produce hydrogen
 	\end{itemize}\medskip
 	\begin{wide}
 	\begin{tikzpicture}[overlay,remember picture]
-		\node[shift={(2.5cm,3.1cm)}] at (current page.south west) {\scalebox{.6}{\usebox\morepingu}};
+		\node[shift={(2.5cm,3.1cm)},visible on=<9->] at (current page.south west) {\scalebox{.6}{\usebox\morepingu}};
 	\end{tikzpicture}
 	\begin{columns}[c]
-		\begin{column}{0.33\textwidth}
+		\begin{column}<+(1)->{0.33\textwidth}
 			\begin{beamerbox}{green}{}
 				Hydrogen from renewable electricity
 			\end{beamerbox}
 		\end{column}
-		\begin{column}{0.33\textwidth}
+		\begin{column}<+(1)->{0.33\textwidth}
 			\begin{beamerbox}{gray}{}
 				Hydrogen from fossil fuels (CO\textsubscript2 released)
 			\end{beamerbox}
 		\end{column}
-		\begin{column}{0.33\textwidth}
+		\begin{column}<+(1)->{0.33\textwidth}
 			\begin{beamerbox}{blue}{}
 				Hydrogen from fossil fuels (CO\textsubscript2 captured)
 			\end{beamerbox}
@@ -299,9 +291,9 @@
 	\frametitle{Hydrogen as a source of energy}
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepbb}};
-		\node[anchor=west,yshift=-5.5mm,xshift=4mm] at (current page.west) {\usebox\storeb};
+		\node[anchor=west,yshift=-5.5mm,xshift=4mm,visible on=<6->] at (current page.west) {\usebox\storeb};
 	\end{tikzpicture}
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item Hydrogen can be safely stored
 		\item Conventional methods of storing hydrogen include
 			\smallskip\begin{itemize}
@@ -312,12 +304,10 @@
 			\end{itemize}\smallskip
 		\item We have the technology to store hydrogen in different capacities for
 			different amounts of time
-	\end{itemize}
-	\begin{itemize}
 		\item The example on the left illustrates how much space is required by 1kg of
 			hydrogen in different states of matter
 	\end{itemize}
-	\begin{uncoverenv}<2->
+	\begin{uncoverenv}<9->
 	\begin{tikzpicture}[overlay,remember picture]
 		\filldraw[darkgray,opacity=0.5] (current page.south west) rectangle (current page.north east);
 		\node[squarenode,rnd,fill=white,inner sep=2pt] at (current page) (T) {\includegraphics[width=0.6\paperwidth]{speicherkapazitaet.jpg}};
@@ -331,7 +321,7 @@
 	\begin{tikzpicture}[overlay,remember picture]
 		\node[anchor=north east,outer sep=2mm] at (current page.north east) {\scalebox{.5}{\usebox\stepcb}};
 	\end{tikzpicture}
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item Again, there are different methods to recover energy from hydrogen
 		\item Fuel cells are the most common one
 		\item In a fuel cell, hydrogen and oxygen react to produce electricity, heat, and water
@@ -342,20 +332,18 @@
 
 \section{How Hydrogen performs}
 \newsavebox\mathpingu
-\savebox\mathpingu{
-	\tikz{\pingu[staff left,monocle left,bow tie=accent,small size]}
-}
+\savebox\mathpingu{\tikz{\pingu[staff left,monocle left,bow tie=accent,small size]}}
 \begin{frame}
 	\frametitle{The overall efficiency}
 	\begin{itemize}
-		\item Let's try to calculate the overall efficiency\\\medskip
-			$\text{Electrolysis} \rightarrow \text{Storing} \rightarrow \text{Energy recovery}$\\
-			$60\% \cdot 98\% \cdot 60\% = 35\%$\hfill\info{lower bound}\\
-			$85\% \cdot \textcolor{gray}{\underbrace{\textcolor{black}{98\%}}_{\text{\clap{Hydrogen stored in salt caverns \cite{ees2022}}}}} \cdot 60\% = 50\%$\hfill\info{upper bound}\\\medskip
-		\item Energy that's lost to heat can easily be used to heat buildings, thus
+		\item<2-> Let's try to calculate the overall efficiency\\\medskip
+			\onslide<3->$\text{Electrolysis} \rightarrow \text{Storing} \rightarrow \text{Energy recovery}$\\
+			\onslide<4->$60\% \cdot 98\% \cdot 60\% = 35\%$\hfill\info{lower bound}\\
+			\onslide<5->$85\% \cdot \textcolor{gray}{\underbrace{\textcolor{black}{98\%}}_{\text{\clap{Hydrogen stored in salt caverns \cite{ees2022}}}}} \cdot 60\% = 50\%$\hfill\info{upper bound}\\\medskip
+		\item<6-> Energy that's lost to heat can easily be used to heat buildings, thus
 			increasing the efficiency
 	\end{itemize}
-	\begin{tikzpicture}[remember picture,overlay]
+	\onslide<1->\begin{tikzpicture}[remember picture,overlay]
 		\node[anchor=south west,yshift=-1.3cm,xshift=-1.2cm] at (current page.south west) {\rotatebox{-20}{\usebox\mathpingu}};
 	\end{tikzpicture}
 \end{frame}
@@ -363,6 +351,7 @@
 
 \begin{frame}
 	\frametitle{Current state}
+	\pause
 	\begin{wide}
 		\pgfplotsset{width=\textwidth, height=.7\textheight, compat=1.18}
 		\pgfplotstableread[col sep=comma]{trend.csv}\trend
@@ -385,11 +374,11 @@
 
 \begin{frame}
 	\frametitle{Current state}
-	\begin{itemize}
+	\begin{itemize}[<+(1)->]
 		\item Our current marked for green hydrogen is still small~\cite{schattauer2022}
 		\item But we have concrete plans for the future~\cite{bund}
 	\end{itemize}\bigskip
-	\begin{itemize}\setlength\itemsep{.8em}
+	\begin{itemize}[<+(1)->]\setlength\itemsep{.8em}
 		\item[\tikzmark{a}] From 2025 on, we will import 500\kern2pt000 tons of green hydrogen from
 			Canada
 		\item[\tikzmark{b}] And in 2027/28, our network of hydrogen pipelines will be 1\kern2pt000~km
@@ -399,10 +388,10 @@
 	\begin{tikzpicture}[remember picture,overlay]
 		\coordinate (S) at ([shift={(-2mm,1.5mm)}]pic cs:a);
 		\coordinate (E) at ([shift={(-2mm,-1.1cm)}]pic cs:c);
-		\draw[-{Latex[round,accent]},lw] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
-		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at (S) {};
-		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:b) {};
-		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:c) {};
+		\draw[-{Latex[round,accent]},lw,visible on=<4->] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<4->] at (S) {};
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<5->] at ([shift={(-2mm,1.5mm)}]pic cs:b) {};
+		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt,visible on=<6->] at ([shift={(-2mm,1.5mm)}]pic cs:c) {};
 	\end{tikzpicture}
 \end{frame}
 
@@ -412,7 +401,7 @@
 	\begin{columns}[c]
 		\begin{column}{0.45\textwidth}
 			\begin{beamerbox}{accent}{Chances}
-				\begin{itemize}
+				\begin{itemize}[<+(1)->]
 					\item Hydrogen has a higher energy density than, \emph{e.g.},
 						batteries or gasoline
 					\item We can produce hydrogen from renewable sources
@@ -422,7 +411,7 @@
 		\end{column}
 		\begin{column}{0.45\textwidth}
 			\begin{beamerbox}{red}{Challenges}
-				\begin{itemize}
+				\begin{itemize}[<+(1)->]
 					\item Currently, hydrogen is rarely green
 					\item We don't (yet) have the infrastructure to
 						\begin{enumerate}
