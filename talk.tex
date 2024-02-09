@@ -220,14 +220,14 @@
 \savebox\stepcb{\tikz\node[pipelinestep,text width=2.2cm, align=center]{Energy recovery};}
 \begin{frame}
 	\frametitle{Hydrogen as a source of energy}
-	\begin{wide}\centering
+	\begin{wide}
 	\begin{itemize}
 		\item Hydrogen is the most common element in the universe~\cite{imagine2021}
 		\item On earth, it's primarily found in water
 	\end{itemize}\smallskip
 	\begin{itemize}
 		\item Three steps to success:
-	\end{itemize}\bigskip
+	\end{itemize}\bigskip\centering
 	\begin{tikzpicture}[node distance=2ex]
 		\node (A) [] {\usebox\stepab};
 		\node (B) [right=of A] {\usebox\stepbb};
@@ -377,11 +377,43 @@
 	\begin{tikzpicture}[remember picture,overlay]
 		\coordinate (S) at ([shift={(-2mm,1.5mm)}]pic cs:a);
 		\coordinate (E) at ([shift={(-2mm,-1.1cm)}]pic cs:c);
-		\draw[-{Latex[round]},lw] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
+		\draw[-{Latex[round,accent]},lw] (S) -- ([shift={(-2mm,1.5mm)}]pic cs:b) -- (E);
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at (S) {};
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:b) {};
 		\node[roundnode,fill=accent,draw=accent,inner sep=1.5pt] at ([shift={(-2mm,1.5mm)}]pic cs:c) {};
 	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+	\frametitle{TLDR}
+	\begin{wide}
+	\begin{columns}[c]
+		\begin{column}{0.45\textwidth}
+			\begin{beamerbox}{accent}{Chances}
+				\begin{itemize}
+					\item Hydrogen has a higher energy density than, \emph{e.g.},
+						batteries or gasoline
+					\item We can produce hydrogen from renewable sources
+					\item Hydrogen has potential applications in various sectors
+				\end{itemize}
+			\end{beamerbox}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{beamerbox}{red}{Challenges}
+				\begin{itemize}
+					\item Currently, hydrogen is rarely green
+					\item We don't (yet) have the infrastructure to
+						\begin{enumerate}
+							\item create,
+							\item transport, and
+							\item store
+						\end{enumerate}
+						hydrogen in large enough quantities
+				\end{itemize}
+			\end{beamerbox}
+		\end{column}
+	\end{columns}
+	\end{wide}
 \end{frame}
 
 \section{References}
